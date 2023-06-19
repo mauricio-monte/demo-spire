@@ -1,0 +1,18 @@
+services:
+  spire_server:
+    build: ./spire_server
+    entrypoint: /bin/bash
+    container_name: spire_server
+    ports: 
+      - '10001:10001'
+    stdin_open: true
+    tty: true
+
+  workloads:
+    build: ./workloads
+    entrypoint: /bin/bash
+    container_name: workloads
+    volumes:
+      - ./workloads/logs:/workloads/logs
+    stdin_open: true
+    tty: true
